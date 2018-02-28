@@ -1,0 +1,14 @@
+<% include ./partials/header %>
+<div class="ui main text container segment">
+    <div class="ui huge header"><%= word.title %></div>
+    <div class="ui top attached">
+        <div class="content">
+            <span><%= word.dateTime %></span>
+        </div>
+        <div class="description">
+            <p><%- word.meaning %></p>
+        </div>
+    </div>
+</div>
+<% include ./partials/footer %>
+

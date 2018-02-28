@@ -1,11 +1,6 @@
 npm init
-npm install --save express mongoose body-parser ejs
+npm install --save express mongoose body-parser ejs moment
 npm install --save-dev locus nodemon
-
-git status
-git add -A
-git commit -m " "
-git push -u origin master
 
 export DATABASEURL=mongodb://localhost/db_wordoftheday
 mongoose.connect(process.env.DATABASEURL);
@@ -16,6 +11,42 @@ nodemon app.js
 
 var locus = require("locus");
 //eval(locus);
+
+to enter html use <%- word.meaning %>
+
+mongob
+------
+mongo
+show dbs
+use db_wordoftheday
+show collections
+db.words.find();                select all
+db.words.remove({})             delete all records in a collections and will keep the collection as is
+
+git status
+git add -A
+git commit -m " "
+git push -u origin master
+
+github
+------
+0x00 - Initial commit
+0x01 - Add - app.js,package.json,.gitignore,.instructions
+0x02 - Add views, Update .instructions,app.js
+0x03 - Add semantic-ui
+0x04 - Add show route
+0x05 -
+0x06 -
+0x07 -
+0x08 -
+0x09 -
+0x0A -
+0x0B -
+0x0C -
+0x0D -
+0x0E -
+0x0F -
+0x10 -
 
 
 

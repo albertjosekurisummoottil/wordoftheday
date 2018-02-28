@@ -2,6 +2,7 @@ var express = require("express");
 var bodyParser= require("body-parser");
 var mongoose = require("mongoose");
 var locus = require("locus");
+var moment = require("moment");
 
 //eval(locus);
 
@@ -15,8 +16,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // mongoose model config
 var wordSchema = new mongoose.Schema({
-    title: {type: String, unique: true},
-    description: String,
+    title: {type: String, unique: true,required: true},
+    meaning: {type: String,required: true},
     created: {type: Date, default:Date.now}
 });
 
@@ -25,7 +26,7 @@ var Word = mongoose.model("Word",wordSchema);
 // // test data
 // Word.create({
 //     title: "word",
-//     description: "A single distinct meaningful element of speech or writing, used with others (or sometimes alone) to form a sentence and typically shown with a space on either side when written or printed."
+//     meaning: "A single distinct meaningful element of speech or writing, used with others (or sometimes alone) to form a sentence and typically shown with a space on either side when written or printed."
 // });
 
 //RESTful routes
@@ -39,6 +40,38 @@ app.get("/words",function(req,res){
             console.log("Error!");
         } else {
             res.render("index",{words: words});
+        }
+    });
+});
+
+//new word route
+app.get("/words/new",function(req,res){
+    res.render("new");
+});
+
+// crearte word route
+app.post("/words",function(req,res){
+    
+    console.log(req.body.word);
+    Word.create(req.body.word,function(err,newWord){
+        if(err){
+            console.log("Error!");
+            res.render("new");
+        } else {
+            res.redirect("/words");
+        }
+    });
+});
+
+// show route
+app.get("/words/:id",function(req,res){
+    Word.findById(req.params.id,function(err,foundWord){
+        if(err){
+            res.redirect("/words");
+        } else {
+            foundWord.dateTime=moment(foundWord.created).format("dddd, MMMM Do YYYY");  //Format cretaed datetime
+            res.render("show",{word: foundWord});
+            //eval(locus);
         }
     });
 });

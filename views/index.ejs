@@ -5,7 +5,8 @@
 <div>
     <h2><%= word.title %></h2>
     <span><%= word.created %></span>
-    <p><%= word.description %></p>
+    <p><%= word.meaning.substring(0,100) %>...</p>
+    <a href="/words/<%= word._id %>">Read More</a>
 </div>
 <% }); %>
 <% include ./partials/footer %>
