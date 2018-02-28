@@ -1,0 +1,31 @@
+{
+  "name": "wordoftheday",
+  "version": "1.0.0",
+  "description": "learn a new word every day",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albertjosekurisummoottil/wordoftheday.git"
+  },
+  "keywords": [
+    "word"
+  ],
+  "author": "Albert Jose",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/albertjosekurisummoottil/wordoftheday/issues"
+  },
+  "homepage": "https://github.com/albertjosekurisummoottil/wordoftheday#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.7"
+  },
+  "devDependencies": {
+    "locus": "^2.0.1",
+    "nodemon": "^1.17.1"
+  }
+}
