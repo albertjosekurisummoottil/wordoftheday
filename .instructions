@@ -7,6 +7,13 @@ git add -A
 git commit -m " "
 git push -u origin master
 
+export DATABASEURL= 
+mongoose.connect(process.env.DATABASEURL);
+
+npm install -g nodemon
+npm install --save-dev nodemon
+nodemon app.js
+
 
 
 
