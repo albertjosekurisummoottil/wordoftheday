@@ -1,6 +1,9 @@
 var express = require("express");
 var bodyParser= require("body-parser");
 var mongoose = require("mongoose");
+var locus = require("locus");
+
+//eval(locus);
 
 var app=express();
 
@@ -31,11 +34,17 @@ app.get("/", function(req,res){
 });
 
 app.get("/words",function(req,res){
-    res.render("index");
+    Word.find({},function(err,words){
+        if(err){
+            console.log("Error!");
+        } else {
+            res.render("index",{words: words});
+        }
+    });
 });
 
 
 app.listen(process.env.PORT,process.env.IP,function(){
-    console.log("wordoftheday server is RUNNING !!!");
+    console.log("wordoftheday Server is RUNNING !!!");
 });
 
