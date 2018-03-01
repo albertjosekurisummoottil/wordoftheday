@@ -1,6 +1,7 @@
 npm init
-npm install --save express mongoose body-parser ejs moment
+npm install --save express mongoose body-parser ejs moment lodash method-override
 npm install --save-dev locus nodemon
+npm uninstall --save dotenv
 
 export DATABASEURL=mongodb://localhost/db_wordoftheday
 mongoose.connect(process.env.DATABASEURL);
@@ -13,6 +14,13 @@ var locus = require("locus");
 //eval(locus);
 
 to enter html use <%- word.meaning %>
+
+cannot find module “lodash”
+$ npm install lodash --save
+$ npm cache clean    
+$ npm install
+
+
 
 mongob
 ------

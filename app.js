@@ -3,6 +3,7 @@ var bodyParser= require("body-parser");
 var mongoose = require("mongoose");
 var locus = require("locus");
 var moment = require("moment");
+var methodOverride = require("method-override");
 
 //eval(locus);
 
@@ -13,6 +14,7 @@ mongoose.connect(process.env.DATABASEURL);
 app.set("view engine","ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride("_method"));
 
 // mongoose model config
 var wordSchema = new mongoose.Schema({
@@ -44,12 +46,12 @@ app.get("/words",function(req,res){
     });
 });
 
-//new word route
+// New word form route
 app.get("/words/new",function(req,res){
     res.render("new");
 });
 
-// crearte word route
+// Crearte word route
 app.post("/words",function(req,res){
     
     console.log(req.body.word);
@@ -63,7 +65,7 @@ app.post("/words",function(req,res){
     });
 });
 
-// show route
+// Show route
 app.get("/words/:id",function(req,res){
     Word.findById(req.params.id,function(err,foundWord){
         if(err){
@@ -76,6 +78,39 @@ app.get("/words/:id",function(req,res){
     });
 });
 
+// Edit route
+app.get("/words/:id/edit",function(req,res){
+    Word.findById(req.params.id, function(err,foundWord){
+        if(err) {
+            res.redirect("/words");
+        } else {
+            res.render("edit",{word: foundWord});
+        }
+    });
+});
+
+// Update route
+app.put("/words/:id",function(req,res){
+    Word.findByIdAndUpdate(req.params.id, req.body.word, function(err,updatedWord){
+        if(err) {
+            res.redirect("/words");
+        } else {
+            res.redirect("/words/"+req.params.id);
+        }
+    });
+});
+
+// Delete route
+app.delete("/words/:id",function(req,res){
+    
+    Word.findByIdAndRemove(req.params.id,function(err,updatedWord){
+        if(err) {
+            res.redirect("/words");
+        } else {
+            res.redirect("/words");
+        }
+    });
+});
 
 app.listen(process.env.PORT,process.env.IP,function(){
     console.log("wordoftheday Server is RUNNING !!!");

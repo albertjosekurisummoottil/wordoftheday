@@ -8,6 +8,10 @@
         <div class="description">
             <p><%- word.meaning %></p>
         </div>
+        <a href="/words/<%= word._id %>/edit" class="ui orange basic button">Edit</a>
+        <form id="delete" action="/words/<%= word._id %>?_method=DELETE" method="POST">
+            <input class="ui red basic button" type="submit" value="Delete">
+        </form>
     </div>
 </div>
 <% include ./partials/footer %>
