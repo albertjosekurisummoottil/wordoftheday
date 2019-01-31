@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Warnes|Abel');
+
+body {
+	margin: 0; padding: 0;
+  	font-family: 'Abel',  sans-serif;
+	font-size: 15px; line-height: 6.25em; color: #625c3c;
+	background-color: #fff;
+}
+
+div#welcome {
+	height: 100vh;
+	background: yellow;
+  color: black;
+}
+ 
+div#projects {
+	height: 100vh;
+	background: black;
+} 
+
+#content {  
+  color:#000;
+  font-size: 80px;
+  text-align: center;
+  text-transform: capitalize;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
